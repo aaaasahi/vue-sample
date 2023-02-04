@@ -5,6 +5,7 @@
       <label>{{ item1 }}</label>
       <label>{{ price1 }}</label>
       <a :href="url">{{ url }}</a>
+      <button @click="click('クリック！')">button</button>
     </div>
   </div>
 
@@ -15,6 +16,10 @@
 const item1 = "コーヒー"
 const price1 = 300
 const url = 'https://google.com'
+
+const click = (itemName: string) => {
+  window.alert(itemName)
+}
 
 </script>
 
@@ -37,6 +42,11 @@ const url = 'https://google.com'
 label {
   font-size: 20px;
   font-weight: bold;
+}
+
+button {
+  background-color: black;
+  color: white;
 }
 
 </style>
