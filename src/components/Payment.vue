@@ -8,7 +8,7 @@
     <button @click="clear">clear</button>
     <div class="payment">
       <label>{{ item1.name }}</label>
-      <label>{{ item1.price }}</label>
+      <label>{{ priceLabel }}</label>
       <a :href="url">{{ url }}</a>
       <button @click="click('クリック！')">button</button>
     </div>
@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
 
 // 単一の値の場合はrefオブジェクトごとの場合はreactive
 
@@ -45,6 +45,13 @@ const clear = () => {
   item1.name = '',
   item1.price = 0
 }
+
+const budget = 5000
+
+// 関数でも書けるが計算ロジックなどはcomputed推奨
+const priceLabel = computed(() => {
+  return item1.price > budget ?  'too expensive' : item1.price
+})
 
 </script>
 
