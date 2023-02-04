@@ -7,8 +7,10 @@
     </div>
     <div class="tweet-container">
       <ul>
+        <p v-show="tweets.length <= 0">No tweets</p>
         <li v-for="tweet in tweets" class="tweet-list">
           <span>{{ tweet.description }}</span>
+          <button @click="deleteTweet(tweet.id)" class="delete-button">delete</button>
         </li>
       </ul>
     </div>
@@ -22,9 +24,15 @@ const tweets = ref([{ id: 0, description: 'test' }])
 const inputDescription = ref<string>('')
 
 const postTweet = () => {
+  if (inputDescription.value == '') return;
   const tweet = { id: Math.random(), description: inputDescription.value }
   tweets.value.push(tweet)
   inputDescription.value = ''
+}
+
+const deleteTweet = (id: number) => {
+  console.log(id)
+  tweets.value = tweets.value.filter(t => t.id !== id) 
 }
 </script>
 
@@ -46,6 +54,10 @@ const postTweet = () => {
   border-radius: 4px;
 }
 
+ul {
+  padding: 0;
+}
+
 .tweet-list {
   list-style: none;
   margin-bottom: 12px;
@@ -63,5 +75,10 @@ button {
   color: white;
   margin-top: 10px;
   padding: 8px;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
 }
 </style>
