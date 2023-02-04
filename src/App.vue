@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import Payment from './components/Payment.vue'
+import Tweet from './components/Tweet.vue';
 </script>
 
 <template>
-  <Payment />
+  <Tweet />
 </template>
 
 <style scoped>
