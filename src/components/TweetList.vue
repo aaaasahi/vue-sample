@@ -6,7 +6,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, defineEmits } from 'vue';
+
 type Tweet = {
   id: number,
   description: string
@@ -19,9 +20,11 @@ type Props = {
 // Tweet型を渡す
 defineProps<Props>()
 
-const deleteTweet = (id: number) => {
-}
+const emit = defineEmits(['delete-tweet'])
 
+const deleteTweet = (id: number) => {
+  emit('delete-tweet', id)
+}
 </script>
 
 <style scoped>
