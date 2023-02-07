@@ -2,9 +2,9 @@
 import { provide } from 'vue';
 import Payment from './components/Payment.vue'
 import Tweet from './components/Tweet.vue';
-import { todos } from './useTodo'
+import { todos, todoKey } from './useTodo'
 
-provide('todos', todos)
+provide(todoKey, todos)
 </script>
 
 <template>
